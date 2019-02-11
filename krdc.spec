@@ -5,19 +5,19 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : krdc
-Version  : 18.08.0
-Release  : 1
-URL      : https://download.kde.org/stable/applications/18.08.0/src/krdc-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/krdc-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/krdc-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 2
+URL      : https://download.kde.org/stable/applications/18.12.2/src/krdc-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/krdc-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/krdc-18.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 LGPL-2.1
-Requires: krdc-bin
-Requires: krdc-lib
-Requires: krdc-data
-Requires: krdc-license
-Requires: krdc-locales
+Requires: krdc-bin = %{version}-%{release}
+Requires: krdc-data = %{version}-%{release}
+Requires: krdc-lib = %{version}-%{release}
+Requires: krdc-license = %{version}-%{release}
+Requires: krdc-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : buildreq-qmake
@@ -35,8 +35,8 @@ http://sourceforge.net/project/showfiles.php?group_id=32584&package_id=24717
 %package bin
 Summary: bin components for the krdc package.
 Group: Binaries
-Requires: krdc-data
-Requires: krdc-license
+Requires: krdc-data = %{version}-%{release}
+Requires: krdc-license = %{version}-%{release}
 
 %description bin
 bin components for the krdc package.
@@ -53,10 +53,10 @@ data components for the krdc package.
 %package dev
 Summary: dev components for the krdc package.
 Group: Development
-Requires: krdc-lib
-Requires: krdc-bin
-Requires: krdc-data
-Provides: krdc-devel
+Requires: krdc-lib = %{version}-%{release}
+Requires: krdc-bin = %{version}-%{release}
+Requires: krdc-data = %{version}-%{release}
+Provides: krdc-devel = %{version}-%{release}
 
 %description dev
 dev components for the krdc package.
@@ -73,8 +73,8 @@ doc components for the krdc package.
 %package lib
 Summary: lib components for the krdc package.
 Group: Libraries
-Requires: krdc-data
-Requires: krdc-license
+Requires: krdc-data = %{version}-%{release}
+Requires: krdc-license = %{version}-%{release}
 
 %description lib
 lib components for the krdc package.
@@ -97,28 +97,28 @@ locales components for the krdc package.
 
 
 %prep
-%setup -q -n krdc-18.08.0
+%setup -q -n krdc-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535201124
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549873392
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535201124
+export SOURCE_DATE_EPOCH=1549873392
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/krdc
-cp COPYING %{buildroot}/usr/share/doc/krdc/COPYING
-cp COPYING.DOC %{buildroot}/usr/share/doc/krdc/COPYING.DOC
-cp COPYING.LIB %{buildroot}/usr/share/doc/krdc/COPYING.LIB
-cp cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/doc/krdc/cmake_modules_COPYING-CMAKE-SCRIPTS
+mkdir -p %{buildroot}/usr/share/package-licenses/krdc
+cp COPYING %{buildroot}/usr/share/package-licenses/krdc/COPYING
+cp COPYING.DOC %{buildroot}/usr/share/package-licenses/krdc/COPYING.DOC
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/krdc/COPYING.LIB
+cp cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/krdc/cmake_modules_COPYING-CMAKE-SCRIPTS
 pushd clr-build
 %make_install
 popd
@@ -150,18 +150,10 @@ popd
 
 %files doc
 %defattr(0644,root,root,0755)
-/usr/share/doc/HTML/ca/krdc/address_input.png
-/usr/share/doc/HTML/ca/krdc/bookmarks_menu.png
-/usr/share/doc/HTML/ca/krdc/general_preferences.png
 /usr/share/doc/HTML/ca/krdc/index.cache.bz2
 /usr/share/doc/HTML/ca/krdc/index.docbook
-/usr/share/doc/HTML/ca/krdc/krdc_mainwindow.png
-/usr/share/doc/HTML/ca/krdc/password_entry.png
-/usr/share/doc/HTML/ca/krdc/rdp_preferences.png
 /usr/share/doc/HTML/ca/krdc/view-fullscreen.png
 /usr/share/doc/HTML/ca/krdc/view-restore.png
-/usr/share/doc/HTML/ca/krdc/vnc_host_configuration.png
-/usr/share/doc/HTML/ca/krdc/vnc_preferences.png
 /usr/share/doc/HTML/de/krdc/address_input.png
 /usr/share/doc/HTML/de/krdc/bookmarks_menu.png
 /usr/share/doc/HTML/de/krdc/general_preferences.png
@@ -224,16 +216,16 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libkrdccore.so.18.08.0
+/usr/lib64/libkrdccore.so.18.12.2
 /usr/lib64/libkrdccore.so.5
 /usr/lib64/qt5/plugins/krdc/libkrdc_testplugin.so
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/krdc/COPYING
-/usr/share/doc/krdc/COPYING.DOC
-/usr/share/doc/krdc/COPYING.LIB
-/usr/share/doc/krdc/cmake_modules_COPYING-CMAKE-SCRIPTS
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/krdc/COPYING
+/usr/share/package-licenses/krdc/COPYING.DOC
+/usr/share/package-licenses/krdc/COPYING.LIB
+/usr/share/package-licenses/krdc/cmake_modules_COPYING-CMAKE-SCRIPTS
 
 %files locales -f krdc.lang
 %defattr(-,root,root,-)
