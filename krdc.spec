@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : krdc
-Version  : 18.12.2
-Release  : 3
-URL      : https://download.kde.org/stable/applications/18.12.2/src/krdc-18.12.2.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.12.2/src/krdc-18.12.2.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.12.2/src/krdc-18.12.2.tar.xz.sig
+Version  : 18.12.3
+Release  : 4
+URL      : https://download.kde.org/stable/applications/18.12.3/src/krdc-18.12.3.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.3/src/krdc-18.12.3.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.3/src/krdc-18.12.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 LGPL-2.1
@@ -97,22 +97,23 @@ locales components for the krdc package.
 
 
 %prep
-%setup -q -n krdc-18.12.2
+%setup -q -n krdc-18.12.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549890256
+export SOURCE_DATE_EPOCH=1552005692
 mkdir -p clr-build
 pushd clr-build
+export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549890256
+export SOURCE_DATE_EPOCH=1552005692
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/krdc
 cp COPYING %{buildroot}/usr/share/package-licenses/krdc/COPYING
@@ -216,7 +217,7 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libkrdccore.so.18.12.2
+/usr/lib64/libkrdccore.so.18.12.3
 /usr/lib64/libkrdccore.so.5
 /usr/lib64/qt5/plugins/krdc/libkrdc_testplugin.so
 
