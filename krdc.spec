@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : krdc
-Version  : 18.12.3
-Release  : 4
-URL      : https://download.kde.org/stable/applications/18.12.3/src/krdc-18.12.3.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.12.3/src/krdc-18.12.3.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.12.3/src/krdc-18.12.3.tar.xz.sig
-Summary  : No detailed summary available
+Version  : 19.04.0
+Release  : 5
+URL      : https://download.kde.org/stable/applications/19.04.0/src/krdc-19.04.0.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.0/src/krdc-19.04.0.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.0/src/krdc-19.04.0.tar.xz.sig
+Summary  : Remote Desktop Client
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 LGPL-2.1
 Requires: krdc-bin = %{version}-%{release}
@@ -57,6 +57,7 @@ Requires: krdc-lib = %{version}-%{release}
 Requires: krdc-bin = %{version}-%{release}
 Requires: krdc-data = %{version}-%{release}
 Provides: krdc-devel = %{version}-%{release}
+Requires: krdc = %{version}-%{release}
 
 %description dev
 dev components for the krdc package.
@@ -97,23 +98,22 @@ locales components for the krdc package.
 
 
 %prep
-%setup -q -n krdc-18.12.3
+%setup -q -n krdc-19.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552005692
+export SOURCE_DATE_EPOCH=1555619539
 mkdir -p clr-build
 pushd clr-build
-export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1552005692
+export SOURCE_DATE_EPOCH=1555619539
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/krdc
 cp COPYING %{buildroot}/usr/share/package-licenses/krdc/COPYING
@@ -212,12 +212,14 @@ popd
 /usr/share/doc/HTML/ru/krdc/index.docbook
 /usr/share/doc/HTML/sr/krdc/index.cache.bz2
 /usr/share/doc/HTML/sr/krdc/index.docbook
+/usr/share/doc/HTML/sv/krdc/index.cache.bz2
+/usr/share/doc/HTML/sv/krdc/index.docbook
 /usr/share/doc/HTML/uk/krdc/index.cache.bz2
 /usr/share/doc/HTML/uk/krdc/index.docbook
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libkrdccore.so.18.12.3
+/usr/lib64/libkrdccore.so.19.04.0
 /usr/lib64/libkrdccore.so.5
 /usr/lib64/qt5/plugins/krdc/libkrdc_testplugin.so
 
