@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : krdc
-Version  : 19.04.2
-Release  : 8
-URL      : https://download.kde.org/stable/applications/19.04.2/src/krdc-19.04.2.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.2/src/krdc-19.04.2.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.2/src/krdc-19.04.2.tar.xz.sig
+Version  : 19.04.3
+Release  : 9
+URL      : https://download.kde.org/stable/applications/19.04.3/src/krdc-19.04.3.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.3/src/krdc-19.04.3.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.3/src/krdc-19.04.3.tar.xz.sig
 Summary  : Remote Desktop Client
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 LGPL-2.1
@@ -99,16 +99,17 @@ locales components for the krdc package.
 
 
 %prep
-%setup -q -n krdc-19.04.2
+%setup -q -n krdc-19.04.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1559899795
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1562879379
 mkdir -p clr-build
 pushd clr-build
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -117,11 +118,11 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1559899795
+export SOURCE_DATE_EPOCH=1562879379
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/krdc
 cp COPYING %{buildroot}/usr/share/package-licenses/krdc/COPYING
@@ -227,7 +228,7 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libkrdccore.so.19.04.2
+/usr/lib64/libkrdccore.so.19.04.3
 /usr/lib64/libkrdccore.so.5
 /usr/lib64/qt5/plugins/krdc/libkrdc_testplugin.so
 
