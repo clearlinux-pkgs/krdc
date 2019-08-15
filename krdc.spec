@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : krdc
-Version  : 19.04.3
-Release  : 9
-URL      : https://download.kde.org/stable/applications/19.04.3/src/krdc-19.04.3.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.3/src/krdc-19.04.3.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.3/src/krdc-19.04.3.tar.xz.sig
+Version  : 19.08.0
+Release  : 10
+URL      : https://download.kde.org/stable/applications/19.08.0/src/krdc-19.08.0.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.0/src/krdc-19.08.0.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.0/src/krdc-19.08.0.tar.xz.sig
 Summary  : Remote Desktop Client
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 LGPL-2.1
@@ -99,16 +99,17 @@ locales components for the krdc package.
 
 
 %prep
-%setup -q -n krdc-19.04.3
+%setup -q -n krdc-19.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1562879379
+export SOURCE_DATE_EPOCH=1565907064
 mkdir -p clr-build
 pushd clr-build
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -122,7 +123,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1562879379
+export SOURCE_DATE_EPOCH=1565907064
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/krdc
 cp COPYING %{buildroot}/usr/share/package-licenses/krdc/COPYING
@@ -228,7 +229,7 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libkrdccore.so.19.04.3
+/usr/lib64/libkrdccore.so.19.08.0
 /usr/lib64/libkrdccore.so.5
 /usr/lib64/qt5/plugins/krdc/libkrdc_testplugin.so
 
