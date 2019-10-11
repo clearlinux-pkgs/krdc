@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : krdc
-Version  : 19.08.1
-Release  : 11
-URL      : https://download.kde.org/stable/applications/19.08.1/src/krdc-19.08.1.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.1/src/krdc-19.08.1.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.1/src/krdc-19.08.1.tar.xz.sig
+Version  : 19.08.2
+Release  : 12
+URL      : https://download.kde.org/stable/applications/19.08.2/src/krdc-19.08.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.2/src/krdc-19.08.2.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.2/src/krdc-19.08.2.tar.xz.sig
 Summary  : Remote Desktop Client
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 LGPL-2.1
@@ -99,14 +99,14 @@ locales components for the krdc package.
 
 
 %prep
-%setup -q -n krdc-19.08.1
+%setup -q -n krdc-19.08.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567708900
+export SOURCE_DATE_EPOCH=1570768336
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -119,11 +119,11 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1567708900
+export SOURCE_DATE_EPOCH=1570768336
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/krdc
 cp COPYING %{buildroot}/usr/share/package-licenses/krdc/COPYING
@@ -153,10 +153,10 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/*.h
 /usr/include/krdc/hostpreferences.h
 /usr/include/krdc/remoteview.h
 /usr/include/krdc/remoteviewfactory.h
+/usr/include/krdccore_export.h
 /usr/lib64/libkrdccore.so
 
 %files doc
@@ -229,7 +229,7 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libkrdccore.so.19.08.1
+/usr/lib64/libkrdccore.so.19.08.2
 /usr/lib64/libkrdccore.so.5
 /usr/lib64/qt5/plugins/krdc/libkrdc_testplugin.so
 
