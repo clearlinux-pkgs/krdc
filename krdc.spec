@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : krdc
-Version  : 20.04.2
-Release  : 20
-URL      : https://download.kde.org/stable/release-service/20.04.2/src/krdc-20.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.04.2/src/krdc-20.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.04.2/src/krdc-20.04.2.tar.xz.sig
+Version  : 20.08.0
+Release  : 21
+URL      : https://download.kde.org/stable/release-service/20.08.0/src/krdc-20.08.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.08.0/src/krdc-20.08.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.08.0/src/krdc-20.08.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 LGPL-2.1
@@ -100,15 +100,15 @@ locales components for the krdc package.
 
 
 %prep
-%setup -q -n krdc-20.04.2
-cd %{_builddir}/krdc-20.04.2
+%setup -q -n krdc-20.08.0
+cd %{_builddir}/krdc-20.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1591894942
+export SOURCE_DATE_EPOCH=1597792366
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -120,17 +120,17 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}  VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1591894942
+export SOURCE_DATE_EPOCH=1597792366
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/krdc
-cp %{_builddir}/krdc-20.04.2/COPYING %{buildroot}/usr/share/package-licenses/krdc/3860f7708aae6a8ddfe8483263b2a5f29b83c975
-cp %{_builddir}/krdc-20.04.2/COPYING.DOC %{buildroot}/usr/share/package-licenses/krdc/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
-cp %{_builddir}/krdc-20.04.2/COPYING.LIB %{buildroot}/usr/share/package-licenses/krdc/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-cp %{_builddir}/krdc-20.04.2/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/krdc/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/krdc-20.08.0/COPYING %{buildroot}/usr/share/package-licenses/krdc/3860f7708aae6a8ddfe8483263b2a5f29b83c975
+cp %{_builddir}/krdc-20.08.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/krdc/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/krdc-20.08.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/krdc/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/krdc-20.08.0/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/krdc/ff3ed70db4739b3c6747c7f624fe2bad70802987
 pushd clr-build
 %make_install
 popd
@@ -147,8 +147,6 @@ popd
 %defattr(-,root,root,-)
 /usr/share/applications/org.kde.krdc.desktop
 /usr/share/config.kcfg/krdc.kcfg
-/usr/share/krdc/pics/pointcursor.png
-/usr/share/krdc/pics/pointcursormask.png
 /usr/share/kxmlgui5/krdc/krdcui.rc
 /usr/share/metainfo/org.kde.krdc.appdata.xml
 
@@ -164,8 +162,6 @@ popd
 %defattr(0644,root,root,0755)
 /usr/share/doc/HTML/ca/krdc/index.cache.bz2
 /usr/share/doc/HTML/ca/krdc/index.docbook
-/usr/share/doc/HTML/ca/krdc/view-fullscreen.png
-/usr/share/doc/HTML/ca/krdc/view-restore.png
 /usr/share/doc/HTML/de/krdc/address_input.png
 /usr/share/doc/HTML/de/krdc/bookmarks_menu.png
 /usr/share/doc/HTML/de/krdc/general_preferences.png
@@ -201,8 +197,16 @@ popd
 /usr/share/doc/HTML/fr/krdc/rdp_preferences.png
 /usr/share/doc/HTML/fr/krdc/vnc_host_configuration.png
 /usr/share/doc/HTML/fr/krdc/vnc_preferences.png
+/usr/share/doc/HTML/it/krdc/address_input.png
+/usr/share/doc/HTML/it/krdc/bookmarks_menu.png
+/usr/share/doc/HTML/it/krdc/general_preferences.png
 /usr/share/doc/HTML/it/krdc/index.cache.bz2
 /usr/share/doc/HTML/it/krdc/index.docbook
+/usr/share/doc/HTML/it/krdc/krdc_mainwindow.png
+/usr/share/doc/HTML/it/krdc/password_entry.png
+/usr/share/doc/HTML/it/krdc/rdp_preferences.png
+/usr/share/doc/HTML/it/krdc/vnc_host_configuration.png
+/usr/share/doc/HTML/it/krdc/vnc_preferences.png
 /usr/share/doc/HTML/nl/krdc/index.cache.bz2
 /usr/share/doc/HTML/nl/krdc/index.docbook
 /usr/share/doc/HTML/pl/krdc/bookmarks_menu.png
@@ -230,7 +234,7 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libkrdccore.so.20.04.2
+/usr/lib64/libkrdccore.so.20.08.0
 /usr/lib64/libkrdccore.so.5
 /usr/lib64/qt5/plugins/krdc/libkrdc_testplugin.so
 
