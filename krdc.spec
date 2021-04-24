@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : krdc
-Version  : 20.12.3
-Release  : 26
-URL      : https://download.kde.org/stable/release-service/20.12.3/src/krdc-20.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.12.3/src/krdc-20.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.12.3/src/krdc-20.12.3.tar.xz.sig
+Version  : 21.04.0
+Release  : 27
+URL      : https://download.kde.org/stable/release-service/21.04.0/src/krdc-21.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.04.0/src/krdc-21.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.04.0/src/krdc-21.04.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 LGPL-2.1
@@ -26,6 +26,7 @@ BuildRequires : kdnssd-dev
 BuildRequires : kdoctools-dev
 BuildRequires : knotifyconfig-dev
 BuildRequires : libssh-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 Qt-only version of the KRDC VNC backend
@@ -100,15 +101,15 @@ locales components for the krdc package.
 
 
 %prep
-%setup -q -n krdc-20.12.3
-cd %{_builddir}/krdc-20.12.3
+%setup -q -n krdc-21.04.0
+cd %{_builddir}/krdc-21.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1618688421
+export SOURCE_DATE_EPOCH=1619222732
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -124,13 +125,13 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1618688421
+export SOURCE_DATE_EPOCH=1619222732
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/krdc
-cp %{_builddir}/krdc-20.12.3/COPYING %{buildroot}/usr/share/package-licenses/krdc/3860f7708aae6a8ddfe8483263b2a5f29b83c975
-cp %{_builddir}/krdc-20.12.3/COPYING.DOC %{buildroot}/usr/share/package-licenses/krdc/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
-cp %{_builddir}/krdc-20.12.3/COPYING.LIB %{buildroot}/usr/share/package-licenses/krdc/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-cp %{_builddir}/krdc-20.12.3/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/krdc/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/krdc-21.04.0/COPYING %{buildroot}/usr/share/package-licenses/krdc/3860f7708aae6a8ddfe8483263b2a5f29b83c975
+cp %{_builddir}/krdc-21.04.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/krdc/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/krdc-21.04.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/krdc/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/krdc-21.04.0/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/krdc/ff3ed70db4739b3c6747c7f624fe2bad70802987
 pushd clr-build
 %make_install
 popd
@@ -234,7 +235,7 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libkrdccore.so.20.12.3
+/usr/lib64/libkrdccore.so.21.04.0
 /usr/lib64/libkrdccore.so.5
 /usr/lib64/qt5/plugins/krdc/libkrdc_testplugin.so
 
