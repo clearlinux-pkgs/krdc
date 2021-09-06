@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : krdc
-Version  : 21.04.2
-Release  : 28
-URL      : https://download.kde.org/stable/release-service/21.04.2/src/krdc-21.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.04.2/src/krdc-21.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.04.2/src/krdc-21.04.2.tar.xz.sig
+Version  : 21.08.1
+Release  : 29
+URL      : https://download.kde.org/stable/release-service/21.08.1/src/krdc-21.08.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.08.1/src/krdc-21.08.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.08.1/src/krdc-21.08.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : BSD-3-Clause GFDL-1.2 GPL-2.0 LGPL-2.1
+License  : BSD-3-Clause GFDL-1.2 GPL-2.0
 Requires: krdc-bin = %{version}-%{release}
 Requires: krdc-data = %{version}-%{release}
 Requires: krdc-lib = %{version}-%{release}
@@ -101,37 +101,37 @@ locales components for the krdc package.
 
 
 %prep
-%setup -q -n krdc-21.04.2
-cd %{_builddir}/krdc-21.04.2
+%setup -q -n krdc-21.08.1
+cd %{_builddir}/krdc-21.08.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1623397063
+export SOURCE_DATE_EPOCH=1630961872
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1623397063
+export SOURCE_DATE_EPOCH=1630961872
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/krdc
-cp %{_builddir}/krdc-21.04.2/COPYING %{buildroot}/usr/share/package-licenses/krdc/3860f7708aae6a8ddfe8483263b2a5f29b83c975
-cp %{_builddir}/krdc-21.04.2/COPYING.DOC %{buildroot}/usr/share/package-licenses/krdc/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
-cp %{_builddir}/krdc-21.04.2/COPYING.LIB %{buildroot}/usr/share/package-licenses/krdc/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-cp %{_builddir}/krdc-21.04.2/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/krdc/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/krdc-21.08.1/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/krdc/29fb05b49e12a380545499938c4879440bd8851e
+cp %{_builddir}/krdc-21.08.1/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/krdc/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/krdc-21.08.1/LICENSES/GFDL-1.2-or-later.txt %{buildroot}/usr/share/package-licenses/krdc/7697008f58568e61e7598e796eafc2a997503fde
+cp %{_builddir}/krdc-21.08.1/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/krdc/3e8971c6c5f16674958913a94a36b1ea7a00ac46
 pushd clr-build
 %make_install
 popd
@@ -148,8 +148,9 @@ popd
 %defattr(-,root,root,-)
 /usr/share/applications/org.kde.krdc.desktop
 /usr/share/config.kcfg/krdc.kcfg
-/usr/share/kxmlgui5/krdc/krdcui.rc
+/usr/share/kservicetypes5/krdc_plugin.desktop
 /usr/share/metainfo/org.kde.krdc.appdata.xml
+/usr/share/qlogging-categories5/krdc.categories
 
 %files dev
 %defattr(-,root,root,-)
@@ -235,16 +236,16 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libkrdccore.so.21.04.2
+/usr/lib64/libkrdccore.so.21.08.1
 /usr/lib64/libkrdccore.so.5
 /usr/lib64/qt5/plugins/krdc/libkrdc_testplugin.so
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/krdc/3860f7708aae6a8ddfe8483263b2a5f29b83c975
-/usr/share/package-licenses/krdc/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-/usr/share/package-licenses/krdc/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
-/usr/share/package-licenses/krdc/ff3ed70db4739b3c6747c7f624fe2bad70802987
+/usr/share/package-licenses/krdc/29fb05b49e12a380545499938c4879440bd8851e
+/usr/share/package-licenses/krdc/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+/usr/share/package-licenses/krdc/7697008f58568e61e7598e796eafc2a997503fde
+/usr/share/package-licenses/krdc/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
 
 %files locales -f krdc.lang
 %defattr(-,root,root,-)
