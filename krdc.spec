@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : krdc
-Version  : 21.08.2
-Release  : 31
-URL      : https://download.kde.org/stable/release-service/21.08.2/src/krdc-21.08.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.08.2/src/krdc-21.08.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.08.2/src/krdc-21.08.2.tar.xz.sig
+Version  : 21.08.3
+Release  : 32
+URL      : https://download.kde.org/stable/release-service/21.08.3/src/krdc-21.08.3.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.08.3/src/krdc-21.08.3.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.08.3/src/krdc-21.08.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
@@ -101,15 +101,15 @@ locales components for the krdc package.
 
 
 %prep
-%setup -q -n krdc-21.08.2
-cd %{_builddir}/krdc-21.08.2
+%setup -q -n krdc-21.08.3
+cd %{_builddir}/krdc-21.08.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1634343766
+export SOURCE_DATE_EPOCH=1636067033
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -125,13 +125,13 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1634343766
+export SOURCE_DATE_EPOCH=1636067033
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/krdc
-cp %{_builddir}/krdc-21.08.2/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/krdc/29fb05b49e12a380545499938c4879440bd8851e
-cp %{_builddir}/krdc-21.08.2/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/krdc/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/krdc-21.08.2/LICENSES/GFDL-1.2-or-later.txt %{buildroot}/usr/share/package-licenses/krdc/7697008f58568e61e7598e796eafc2a997503fde
-cp %{_builddir}/krdc-21.08.2/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/krdc/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/krdc-21.08.3/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/krdc/29fb05b49e12a380545499938c4879440bd8851e
+cp %{_builddir}/krdc-21.08.3/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/krdc/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/krdc-21.08.3/LICENSES/GFDL-1.2-or-later.txt %{buildroot}/usr/share/package-licenses/krdc/7697008f58568e61e7598e796eafc2a997503fde
+cp %{_builddir}/krdc-21.08.3/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/krdc/3e8971c6c5f16674958913a94a36b1ea7a00ac46
 pushd clr-build
 %make_install
 popd
@@ -236,7 +236,7 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libkrdccore.so.21.08.2
+/usr/lib64/libkrdccore.so.21.08.3
 /usr/lib64/libkrdccore.so.5
 /usr/lib64/qt5/plugins/krdc/libkrdc_testplugin.so
 
