@@ -7,7 +7,7 @@
 #
 Name     : krdc
 Version  : 23.04.0
-Release  : 49
+Release  : 50
 URL      : https://download.kde.org/stable/release-service/23.04.0/src/krdc-23.04.0.tar.xz
 Source0  : https://download.kde.org/stable/release-service/23.04.0/src/krdc-23.04.0.tar.xz
 Source1  : https://download.kde.org/stable/release-service/23.04.0/src/krdc-23.04.0.tar.xz.sig
@@ -19,6 +19,7 @@ Requires: krdc-data = %{version}-%{release}
 Requires: krdc-lib = %{version}-%{release}
 Requires: krdc-license = %{version}-%{release}
 Requires: krdc-locales = %{version}-%{release}
+BuildRequires : FreeRDP-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules-data
@@ -28,6 +29,7 @@ BuildRequires : kdoctools-dev
 BuildRequires : knotifyconfig-dev
 BuildRequires : libssh-dev
 BuildRequires : pkgconfig(libvncserver)
+BuildRequires : xrdp-dev
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
@@ -113,7 +115,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682022971
+export SOURCE_DATE_EPOCH=1682023211
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -129,7 +131,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1682022971
+export SOURCE_DATE_EPOCH=1682023211
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/krdc
 cp %{_builddir}/krdc-%{version}/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/krdc/29fb05b49e12a380545499938c4879440bd8851e || :
