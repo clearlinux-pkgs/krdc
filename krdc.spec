@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : krdc
-Version  : 23.08.3
-Release  : 61
-URL      : https://download.kde.org/stable/release-service/23.08.3/src/krdc-23.08.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.08.3/src/krdc-23.08.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.08.3/src/krdc-23.08.3.tar.xz.sig
+Version  : 23.08.4
+Release  : 62
+URL      : https://download.kde.org/stable/release-service/23.08.4/src/krdc-23.08.4.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.08.4/src/krdc-23.08.4.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.08.4/src/krdc-23.08.4.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
@@ -108,15 +108,15 @@ locales components for the krdc package.
 
 
 %prep
-%setup -q -n krdc-23.08.3
-cd %{_builddir}/krdc-23.08.3
+%setup -q -n krdc-23.08.4
+cd %{_builddir}/krdc-23.08.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1702002520
+export SOURCE_DATE_EPOCH=1702947912
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -175,7 +175,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1702002520
+export SOURCE_DATE_EPOCH=1702947912
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/krdc
 cp %{_builddir}/krdc-%{version}/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/krdc/29fb05b49e12a380545499938c4879440bd8851e || :
@@ -291,13 +291,13 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libkrdccore.so.23.08.3
+/V3/usr/lib64/libkrdccore.so.23.08.4
 /V3/usr/lib64/qt5/plugins/krdc/kcms/libkcm_krdc_rdpplugin.so
 /V3/usr/lib64/qt5/plugins/krdc/kcms/libkcm_krdc_vncplugin.so
 /V3/usr/lib64/qt5/plugins/krdc/libkrdc_rdpplugin.so
 /V3/usr/lib64/qt5/plugins/krdc/libkrdc_testplugin.so
 /V3/usr/lib64/qt5/plugins/krdc/libkrdc_vncplugin.so
-/usr/lib64/libkrdccore.so.23.08.3
+/usr/lib64/libkrdccore.so.23.08.4
 /usr/lib64/libkrdccore.so.5
 /usr/lib64/qt5/plugins/krdc/kcms/libkcm_krdc_rdpplugin.so
 /usr/lib64/qt5/plugins/krdc/kcms/libkcm_krdc_vncplugin.so
