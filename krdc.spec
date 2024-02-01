@@ -9,7 +9,7 @@
 #
 Name     : krdc
 Version  : 23.08.4
-Release  : 62
+Release  : 63
 URL      : https://download.kde.org/stable/release-service/23.08.4/src/krdc-23.08.4.tar.xz
 Source0  : https://download.kde.org/stable/release-service/23.08.4/src/krdc-23.08.4.tar.xz
 Source1  : https://download.kde.org/stable/release-service/23.08.4/src/krdc-23.08.4.tar.xz.sig
