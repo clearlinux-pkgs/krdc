@@ -9,7 +9,7 @@
 #
 Name     : krdc
 Version  : 24.02.0
-Release  : 66
+Release  : 67
 URL      : https://download.kde.org/stable/release-service/24.02.0/src/krdc-24.02.0.tar.xz
 Source0  : https://download.kde.org/stable/release-service/24.02.0/src/krdc-24.02.0.tar.xz
 Source1  : https://download.kde.org/stable/release-service/24.02.0/src/krdc-24.02.0.tar.xz.sig
@@ -132,7 +132,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1710461708
+export SOURCE_DATE_EPOCH=1710524575
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -193,7 +193,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1710461708
+export SOURCE_DATE_EPOCH=1710524575
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/krdc
 cp %{_builddir}/krdc-%{version}/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/krdc/29fb05b49e12a380545499938c4879440bd8851e || :
