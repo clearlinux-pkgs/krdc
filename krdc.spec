@@ -9,7 +9,7 @@
 #
 Name     : krdc
 Version  : 24.05.2
-Release  : 81
+Release  : 82
 URL      : https://download.kde.org/stable/release-service/24.05.2/src/krdc-24.05.2.tar.xz
 Source0  : https://download.kde.org/stable/release-service/24.05.2/src/krdc-24.05.2.tar.xz
 Source1  : https://download.kde.org/stable/release-service/24.05.2/src/krdc-24.05.2.tar.xz.sig
