@@ -1,4 +1,6 @@
-24.05.2
+24.08.0
 kdnssd-dev
 kstatusnotifieritem-dev
 libssh-dev
+qt6wayland-dev
+wayland-dev
